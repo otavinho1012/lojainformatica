@@ -9,7 +9,6 @@ import javax.swing.table.DefaultTableModel;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author oaugu
@@ -36,14 +35,14 @@ public class ConsultarDados extends javax.swing.JFrame {
         txtTitle = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
         txtInputCPU = new javax.swing.JLabel();
-        inputValueCPU = new javax.swing.JTextField();
+        txtProcessador = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableComp = new javax.swing.JTable();
         btnDelete = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnConsultar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         txtTitle.setFont(new java.awt.Font("Lucida Console", 0, 36)); // NOI18N
         txtTitle.setText("Consultar Dados");
@@ -61,23 +60,23 @@ public class ConsultarDados extends javax.swing.JFrame {
 
         TableComp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Marca", "HD", "Processador"
+                "Id", "Marca", "HD", "Processador"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -117,19 +116,20 @@ public class ConsultarDados extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(txtTitle)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(txtInputCPU)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(inputValueCPU, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtProcessador, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -140,7 +140,7 @@ public class ConsultarDados extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtInputCPU)
-                    .addComponent(inputValueCPU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtProcessador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,27 +158,26 @@ public class ConsultarDados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        
-        
+
         AdicionarDados telaAlterar = new AdicionarDados();
-            telaAlterar.setVisible(true);
+        telaAlterar.setVisible(true);
 
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         int linhaSelecionada = TableComp.getSelectedRow();
-    DefaultTableModel modelo = (DefaultTableModel) TableComp.getModel();
-    int idExcluir = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 0).toString());
-    boolean retorno = ComputadorDAO.excluir(idExcluir);
+        DefaultTableModel modelo = (DefaultTableModel) TableComp.getModel();
+        int idExcluir = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 0).toString());
+        boolean retorno = ComputadorDAO.excluir(idExcluir);
 
-    if (retorno) {
-        JOptionPane.showMessageDialog(rootPane, "Sucesso");
-        modelo.removeRow(linhaSelecionada);
-        TableComp.revalidate();
-    } else {
-        JOptionPane.showMessageDialog(rootPane, "Deu ruim");
-    }
-        
+        if (retorno) {
+            JOptionPane.showMessageDialog(rootPane, "Sucesso");
+            modelo.removeRow(linhaSelecionada);
+            TableComp.revalidate();
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Deu ruim");
+        }
+
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
@@ -189,15 +188,17 @@ public class ConsultarDados extends javax.swing.JFrame {
         if (linhaSelecionada >= 0) {
             int idSelecionado = Integer.parseInt(modelo.getValueAt(linhaSelecionada, 0).toString());
 
-            String hdSelecionado = modelo.getValueAt(linhaSelecionada, 0).toString();
+            String hdSelecionado = modelo.getValueAt(linhaSelecionada, 1).toString();
 
-            String processadorSelecionado = modelo.getValueAt(linhaSelecionada, 0).toString();
+            String processadorSelecionado = modelo.getValueAt(linhaSelecionada, 2).toString();
 
-            var computador = new Computador(idSelecionado, hdSelecionado, processadorSelecionado);
+            String marca = modelo.getValueAt(linhaSelecionada, 3).toString();
+
+            var computador = new Computador(idSelecionado, hdSelecionado, processadorSelecionado, marca);
 
             AdicionarDados telaAlterar = new AdicionarDados(computador);
             telaAlterar.setVisible(true);
-
+            TableComp.revalidate();
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma linha!");
 
@@ -206,17 +207,37 @@ public class ConsultarDados extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        ArrayList<Computador> computador = ComputadorDAO.listar();
 
-        DefaultTableModel modelo = (DefaultTableModel) TableComp.getModel();
-        modelo.setRowCount(0);
+        if (txtProcessador.getText().trim().equals("")) {
 
-        for (Computador cpu : computador) {
-            modelo.addRow(new String[]{
-                String.valueOf(cpu.getID()),
-                String.valueOf(cpu.getHD()),
-                String.valueOf(cpu.getProcessador())
-            });
+            ArrayList<Computador> computador = ComputadorDAO.listar();
+
+            DefaultTableModel modelo = (DefaultTableModel) TableComp.getModel();
+            modelo.setRowCount(0);
+
+            for (Computador cpu : computador) {
+                modelo.addRow(new String[]{
+                    String.valueOf(cpu.getID()),
+                    String.valueOf(cpu.getMarca()),
+                    String.valueOf(cpu.getHD()),
+                    String.valueOf(cpu.getProcessador())
+                });
+            }
+        } else {
+            String processador = txtProcessador.getText();
+
+            ArrayList<Computador> computador = ComputadorDAO.listarPorNome(processador);
+            DefaultTableModel modelo = (DefaultTableModel) TableComp.getModel();
+            modelo.setRowCount(0);
+
+            for (Computador cpu : computador) {
+                modelo.addRow(new String[]{
+                    String.valueOf(cpu.getID()),
+                    String.valueOf(cpu.getMarca()),
+                    String.valueOf(cpu.getHD()),
+                    String.valueOf(cpu.getProcessador())
+                });
+            }
         }
     }//GEN-LAST:event_btnConsultarActionPerformed
 
@@ -263,9 +284,9 @@ public class ConsultarDados extends javax.swing.JFrame {
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
-    private javax.swing.JTextField inputValueCPU;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel txtInputCPU;
+    private javax.swing.JTextField txtProcessador;
     private javax.swing.JLabel txtTitle;
     // End of variables declaration//GEN-END:variables
 }

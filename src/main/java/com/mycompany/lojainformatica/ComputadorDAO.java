@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class ComputadorDAO {
     
-    static String url = "jdbc:mysql://localhost:3306/basecomputador";
+    static String url = "jdbc:mysql://localhost:3306/lojaInformatica";
     static String login = "root";
     static String senha = "root";
     
@@ -44,8 +44,7 @@ public class ComputadorDAO {
             int linhasAfetadas = comandoSQL.executeUpdate();
 
             if(linhasAfetadas > 0){
-                rs = comandoSQL.getGeneratedKeys();
-                System.out.println(rs);
+                rs = comandoSQL.getGeneratedKeys(); 
                 if(rs != null){
                     while(rs.next()){
                         int idGerado = rs.getInt(1);
@@ -94,11 +93,12 @@ public class ComputadorDAO {
                 while(rs.next()){
           
                 int id = rs.getInt("pk_id");
-                String hd = rs.getString("ds_hd");
+                String marca = rs.getString("ds_marca");
+               String hd = rs.getString("ds_hd");
                 String processador = rs.getString("ds_processador");
                 
                 
-                var computador = new Computador(id,hd,processador);
+                var computador = new Computador(id,hd,processador,marca);
                 
                 lista.add(computador);
                 }
@@ -135,11 +135,8 @@ public class ComputadorDAO {
 
             comandoSQL = conexao.prepareStatement("UPDATE computador SET  ds_hd = ?,ds_processador = ? WHERE PK_ID = ?");
             comandoSQL.setString(1, novoComputador.getHD());
-            System.out.println("Passou 1");
             comandoSQL.setString(2, novoComputador.getProcessador());
-            System.out.println("Passou 2");
-            comandoSQL.setInt(3,novoComputador.getID());
-            System.out.println("Passou 3");
+            comandoSQL.setInt(3,(int) novoComputador.getID());
             int linhasAfetadas = comandoSQL.executeUpdate();
 
             if(linhasAfetadas > 0){
@@ -204,7 +201,53 @@ public class ComputadorDAO {
         return retorno;
     }
     
+     public static ArrayList<Computador> listarPorNome(String busca){
+           ArrayList<Computador> lista = new ArrayList<>();
+           Connection conexao = null;
+           PreparedStatement comandoSQL = null;
+           ResultSet rs = null;
+           
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            conexao = DriverManager.getConnection(url, login, senha);
+            
+            comandoSQL = conexao.prepareStatement("SELECT * FROM computador WHERE ds_processador = ?");
+            comandoSQL.setString(1, busca);
+             rs = comandoSQL.executeQuery();
+            
+            if(rs != null){
+         
+                while(rs.next()){
+          
+                int id = rs.getInt("pk_id");
+                String marca = rs.getString("ds_marca");
+               String hd = rs.getString("ds_hd");
+                String processador = rs.getString("ds_processador");
+                
+                
+                var computador = new Computador(id,hd,processador,marca);
+                
+                lista.add(computador);
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ComputadorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+           Logger.getLogger(ComputadorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            if (conexao != null) {
+                try {
+                    conexao.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger( ComputadorDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        
+        }    
+           return lista;
     
+    }
    
     
 }

@@ -21,7 +21,15 @@ public class Computador {
     
     public Computador() {
     }
+    
     public Computador( int id, String hd,String processador) {
+        this.marca = "Otavio Augusto Reis Almeida";
+        this.id = id;
+        this.hd = hd;
+        this.processador = processador; 
+    }
+    public Computador( int id, String hd,String processador,String marca) {
+        this.marca = marca;
         this.id = id;
         this.hd = hd;
         this.processador = processador; 
@@ -46,7 +54,7 @@ public class Computador {
         this.processador = processador;
     }
     
-    public int getID() {
+    public Object getID() {
         return id;
     }
 

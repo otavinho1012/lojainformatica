@@ -50,7 +50,7 @@ public class AdicionarDados extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         lblID = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         txtInputHD.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         txtInputHD.setText("HD:");
@@ -94,8 +94,8 @@ public class AdicionarDados extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblID)
                 .addGap(52, 52, 52)
                 .addComponent(txtTitle)
@@ -129,7 +129,7 @@ public class AdicionarDados extends javax.swing.JFrame {
     private void btnSalvarPecasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPecasActionPerformed
       if(objAlterar == null){
           String HD = txtHD.getText();
-      String processador = txtProcessador.getText();
+        String processador = txtProcessador.getText();
       
       Computador novoComputador = new Computador(HD,processador);
 
@@ -137,9 +137,12 @@ public class AdicionarDados extends javax.swing.JFrame {
       
             if(retorno == true){
                 JOptionPane.showMessageDialog(rootPane, "Sucesso - id: " + novoComputador.getID());
+                 new ConsultarDados().setVisible(true);
+                 this.dispose();
             }else{
                 JOptionPane.showMessageDialog(rootPane, "Falha!");
             }
+            
       }else{             
                 String HD = txtHD.getText();
                 String processador = txtProcessador.getText();
